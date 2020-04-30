@@ -1,0 +1,10 @@
+To play the game make sure you
+
+download all the files of this repository
+
+even then if you are unable to play the game then make sure you have
+the updated version of python and pygame installed on your
+computer.
+
+after downloading and installation of all the the nessassary files
+double click on the .py file and enjoy the game.
