@@ -1,3 +1,7 @@
+# made by:- Tushar Gupta
+# Classic Ludo game made in python using pygame library
+# INDIAN INSTITUTE OF INFORMATION TECHNOLOGY, ALLAHABAD
+
 import pygame
 pygame.init()
 from random import randint
