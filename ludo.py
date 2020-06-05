@@ -2,14 +2,19 @@
 # Classic Ludo game made in python using pygame library
 # INDIAN INSTITUTE OF INFORMATION TECHNOLOGY, ALLAHABAD
 
+
+#importing the library
 import pygame
 pygame.init()
 from random import randint
 
+#creating the window
 win = pygame.display.set_mode((532, 560))
 pygame.display.set_caption("Ludo")
 clock = pygame.time.Clock()
 
+
+#importing the art
 mouse = [pygame.image.load('data/mouse.png')]
 ludo = [pygame.image.load('data/ludo.jpg')]
 Blue = [pygame.image.load('data/b.png')]
@@ -29,11 +34,13 @@ winner = [pygame.image.load('data/winner.png')]
 tik = pygame.mixer.Sound('data/tik.wav')
 value = -2
 
+#defining the positions of the tiles
+#x position
 greenx = [38, 73, 110, 145, 180, 215, 215, 215, 215, 215, 215, 250, 286, 286, 286, 286, 286, 286, 322, 357, 393, 429, 464, 500, 500, 500, 464, 429, 393, 357, 322, 286, 286, 286, 286, 286, 286, 250, 215, 215, 215, 215, 215, 215, 180, 145, 110, 73, 38, 3, 3, 38, 73, 110, 145, 180]
 yellowx = [286, 286, 286, 286, 286, 322, 357, 393, 429, 464, 500, 500, 500, 464, 429, 393, 357, 322, 286, 286, 286, 286, 286, 286, 250, 215, 215, 215, 215, 215, 215, 180, 145, 110, 73, 38, 3, 3, 3, 38, 73, 110, 145, 180, 215, 215, 215, 215, 215, 215, 250, 250, 250, 250, 250, 250]
 bluex = [464, 429, 393, 357, 322, 286, 286, 286, 286, 286, 286, 250, 215, 215, 215, 215, 215, 215, 180, 145, 110, 73, 38, 3, 3, 3, 38, 73, 110, 145, 180, 215, 215, 215, 215, 215, 215, 250, 286, 286, 286, 286, 286, 286, 322, 357, 393, 429, 464, 500, 500, 464, 429, 393, 357, 322]
 redx = [215, 215, 215, 215, 215, 180, 145, 110, 73, 38, 3, 3, 3, 38, 73, 110, 145, 180, 215, 215, 215, 215, 215, 215, 250, 286, 286, 286, 286, 286, 286, 322, 357, 393, 429, 464, 500, 500, 500, 464, 429, 393, 357, 322, 286, 286, 286, 286, 286, 286, 250, 250, 250, 250, 250, 250]
-
+#y position
 greeny = [215, 215, 215, 215, 215, 179, 144, 109, 74, 39, 3, 3, 3, 39, 74, 109, 144, 179, 215, 215, 215, 215, 215, 215, 251, 287, 287, 287, 287, 287, 287, 323, 358, 393, 428, 463, 500, 500, 500, 463, 428, 393, 358, 323, 287, 287, 287, 287, 287, 287, 251, 251, 251, 251, 251, 251]
 yellowy = [39, 74, 109, 144, 179, 215, 215, 215, 215, 215, 215, 251, 287, 287, 287, 287, 287, 287, 323, 358, 393, 428, 463, 500, 500, 500, 463, 428, 393, 358, 323, 287, 287, 287, 287, 287, 287, 251, 215, 215, 215, 215, 215, 215, 179, 144, 109, 74, 39, 3, 3, 39, 74, 109, 144, 179]
 bluey = [287, 287, 287, 287, 287, 323, 358, 393, 428, 463, 500, 500, 500, 463, 428, 393, 358, 323, 287, 287, 287, 287, 287, 287, 251, 215,215, 215, 215, 215, 215, 179, 144, 109, 74, 39, 3, 3, 3, 39, 74, 109, 144, 179, 215, 215, 215, 215, 215, 215, 251, 251, 251, 251, 251, 251]
@@ -45,6 +52,7 @@ b = 1
 c = 1
 d = 1
 
+#defining the tockens
 class player(object):
     def __init__ (self, x, y, tocken):
         self.x = x
@@ -54,6 +62,7 @@ class player(object):
     def draw(self, win):
         win.blit(self.tocken, (self.x,self.y))
 
+#draw the window
 def drawscreen(value, sxa, sya):
     win.blit(ludo[0], (0,0))
     win.blit(dice[value-1], (238, 238))
@@ -78,6 +87,8 @@ def drawscreen(value, sxa, sya):
         
     pygame.display.update()
 
+    
+#draw the menu page
 def Drawmenu():
     win.blit(ludo[0], (0,0))
     win.blit(menu[0], (207, 90))
@@ -86,6 +97,8 @@ def Drawmenu():
     win.blit(exiti[0], (175, 300))
     pygame.display.update()
 
+    
+#draw the instruction page
 def instruction():
     win.blit(ludo[0], (0,0))
     win.blit(back[0], (450, 10))
@@ -100,6 +113,8 @@ font = pygame.font.SysFont('comiccsans', 40, True)
 i = 1
 run = False
 Drawmenu()
+
+#printing the menu page
 while not(run):
     clock.tick(27)
     
@@ -109,7 +124,8 @@ while not(run):
 
         if event.type == pygame.MOUSEBUTTONDOWN:
             x, y = pygame.mouse.get_pos()
-
+            
+            #defining the buttons
             if x > 180 and x <355:
                 if y > 155 and y < 215:
                     run = True
@@ -131,21 +147,24 @@ while not(run):
                     pygame.quit()
 
 
+#create tockens for different colors
+#key = player(x-position, y-position, tocken)
+#green
 g1 = player(56, 56, green[0])
 g3 = player(56, 128, green[0])
 g2 = player(127, 56, green[0])
 g4 = player(127, 128, green[0])
-
+#blue
 b3 = player(376, 446, Blue[0])
 b1 = player(376, 376, Blue[0])
 b4 = player(447,446, Blue[0])
 b2 = player(447, 376, Blue[0])
-
+#red
 r1 = player(56, 376, red[0])
 r2 = player(127, 376, red[0])
 r3 = player(56, 446, red[0])
 r4 = player(127, 446, red[0])
-
+#yellow
 y1 = player(376, 56, yellow[0])
 y2 = player(447, 56, yellow[0])
 y3 = player(376, 128, yellow[0])
@@ -155,32 +174,38 @@ greenk = [g1, g2, g3, g4]
 yellowk = [y1, y2, y3, y4]
 redk = [r1, r2, r3, r4]
 bluek = [b1, b2, b3, b4]
+
 gpos = [1, 1, 1, 1]
 ypos = [1, 1, 1, 1]
 rpos = [1, 1, 1, 1]
 bpos = [1, 1, 1, 1]
 
-
+#initialising the tockens in the house
+#green
 g1x = -1
 g2x = -1
 g3x = -1
 g4x = -1
 
+#yellow
 y1x = -1
 y2x = -1
 y3x = -1
 y4x = -1
 
+#red
 r1x = -1
 r2x = -1
 r3x = -1
 r4x = -1
 
+#blue
 b1x = -1
 b2x = -1
 b3x = -1
 b4x = -1
 
+#define variables
 blah = 0
 turn = True
 move = 0
@@ -189,10 +214,12 @@ drawscreen(6, -100,-100)
 click = False
 done = False
 
+#main game loop
 while run:
     xcor = -100
     ycor = -100
 
+    #checking who's winner
     if a == 1:
         blaha = 0
         for p in gpos:
@@ -250,6 +277,7 @@ while run:
         
     clock.tick(100)
         
+    #printing the text (whose chance)    
     if i == 1:
         win.fill((0,0,0))
         text = font.render('Player: Green', 1, (255, 255, 255))
@@ -266,11 +294,13 @@ while run:
         win.fill((0,0,0))
         text = font.render('Player: Red', 1, (255, 255, 255))
         win.blit(text, (10, 534))    
-
+    
+    #checking for the event quit
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-
+    
+    #Rolling the dice
     if turn == True:
             keys = pygame.key.get_pressed()
             click = False
@@ -293,6 +323,7 @@ while run:
             if eventi.type == pygame.QUIT:
                 pygame.quit()
             
+            #getting the mouse position
             if eventi.type == pygame.MOUSEBUTTONUP:
                 sx, sy = pygame.mouse.get_pos()
                 click = True
@@ -302,12 +333,16 @@ while run:
         print('',end='')
         if i == 5:
                     i = 1
-                    
+        
+        #if we select green
         if i == 1:
+                    #finding which tocken we select out of 4 tockens
                     if done:
                         if sx > g1.x and sx <g1.x +30:
                             if sy > g1.y and sy <g1.y + 30:
                                 wait = False
+                                
+                                #if tocken is inside wait till dice rolls to 1
                                 if gpos[0] == 1:
                                     if value == 1:
                                         g1x += value
@@ -315,8 +350,10 @@ while run:
                                         g1.x = greenx[g1x-1]
                                         g1.y = greeny[g1x-1]
                                         done = False
-
+                                
+                                #if tocken is out of the house do the following
                                 if gpos[0] == 2:
+                                    #if dice rolls to 6 you get a chance
                                     if value == 6:
                                         i -= 1
                                     g1x += value
@@ -341,7 +378,7 @@ while run:
                         else:
                             count += 1
                                 
-
+                    #same as the first one
                     if done:
                         if sx > g2.x and sx <g2.x +30:
                             if sy > g2.y and sy <g2.y + 30:
@@ -454,6 +491,7 @@ while run:
                         else:
                             count += 1
 
+                    #checking if the tocken is on the safe position or not
                     ouch = True
                     if xcor == 38 and ycor == 215:
                         ouch = False
@@ -472,6 +510,7 @@ while run:
                     if xcor == 286 and ycor == 428:
                         ouch = False
 
+                    #if tocken is not on the same position check if it kicks off other player tocken or not
                     if ouch:
                         if xcor == y1.x and ycor == y1.y:
                             tik.play()
@@ -567,7 +606,8 @@ while run:
                             r4x = -1
                             if value != 6:
                                 i -= 1
-                                
+        
+        #same as the first one
         elif i == 2:
                     if done:
                         if sx > y1.x and sx <y1.x +30:
@@ -1376,6 +1416,7 @@ while run:
                             g4x = -1
                             if value != 6:
                                 i -= 1
-                                
+    
+    #checking if we select a valid position or not
     if count == 4:
             wait = True
